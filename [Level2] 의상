@@ -1,0 +1,18 @@
+#try1 -> solve
+#dict형태로 의류의 각 tye의 개수를 계산
+#조합을 사용해서 모두 안입을 것을 제외하고 구함
+
+def solution(clothes):
+    answer = 1
+    look_book = dict()
+    
+    for _, case in clothes:
+        if case in look_book:
+            look_book[case] += 1
+        else:
+            look_book[case] = 1
+            
+    for i in look_book.values():
+        answer *= (i+1)
+    
+    return answer - 1 
