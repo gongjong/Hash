@@ -1,0 +1,12 @@
+#try 1 -> 중복되는 요소들을 1개로 생각해야하는 문제였다.
+#그래서 Counter을 사용하여 폰켓몬의 종류를 구하고 nuums//2와 비교해서 결과를 출력하였다.
+from collections import Counter as counter
+
+def solution(nums):
+    return min(len(counter(nums)), len(nums)//2)
+
+
+#다른사람 풀이
+#똑같은 방법으로 접근하였는데 중복 제거를 set()을 사용하였다.
+def solution(ls):
+    return min(len(ls)/2, len(set(ls)))
