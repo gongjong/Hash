@@ -1,1 +1,26 @@
+#try1 -> solve
+# dict를 2개 만들어서 조건 3개를 해결
 
+def solution(genres, plays):
+    answer = []
+    
+    dict1 = dict()
+    dict2 = dict()
+    
+    for idx, (genre, play) in enumerate(zip(genres, plays)):
+        if genre in dict1:
+            dict1[genre].append([idx, play])
+        else:
+            dict1[genre] = [[idx, play]]
+        
+        if genre in dict2:
+            dict2[genre] += play
+        else:
+            dict2[genre] = play
+            
+    for genre, _ in sorted(dict2.items(), key = lambda x:x[1], reverse = True):
+        for idx, _ in sorted(dict1[genre], key = lambda x:x[1], reverse = True)[:2]:
+            answer.append(idx)
+            
+        
+    return answer
