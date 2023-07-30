@@ -1,0 +1,8 @@
+#try 1 -> 놀랐다. Counter은 빼기가 가능하다는걸 한번 확인했고
+#나름 신박한 방법으로 풀었다고 생각했는데 이미 많은 사람이 이러한 방식으로 풀었더라.
+
+from collections import Counter as counter
+
+def solution(participant, completion):
+    answer = counter(participant) - counter(completion)
+    return list(answer.keys())[0]
