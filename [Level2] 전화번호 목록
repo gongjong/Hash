@@ -1,0 +1,46 @@
+#try1 -> timeover
+#2중 반복문이라 시간초과에 걸린것 같다.
+
+def solution(phone_book):
+    answer = True
+    phone_book.sort()
+    
+    for i in range(len(phone_book)-1):
+        len_ = len(phone_book[i])
+        for phone in phone_book[i+1:]:
+            if phone[:len_] == phone_book[i]:
+                answer = False
+                break
+        
+        
+    
+    return answer
+
+#try2 -> solve
+#앞자리가 같다는건 정렬을 했을때 두 값이 붙어 있다는 의미이다. 
+#그걸 토대로 반복문을 1개로 압축하였다.
+
+def solution(phone_book):
+    answer = True
+    phone_book.sort()
+    
+    check = phone_book[0]
+    for phone in phone_book[1:]:
+        if check == phone[:len(check)]:
+            answer = False
+            break
+        check = phone
+    return answer
+
+
+#다른사람 풀이
+#zip을 사용했다. 하지만 내 방법이 더 효율적인듯하다.
+#a.startswith(b)란 함수가 존재한다 -> a가 b로 시작하면 "참"임을 출력한다.
+
+def solution(phoneBook):
+    phoneBook = sorted(phoneBook)
+
+    for p1, p2 in zip(phoneBook, phoneBook[1:]):
+        if p2.startswith(p1):
+            return False
+    return True
